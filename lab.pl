@@ -39,7 +39,7 @@ all_bigger([X|Xs],[Y|Ys]):- X > Y, all_bigger(Xs,Ys).
 sublist([],L2).
 sublist([X|Xs],L2) :- search(X,L2), sublist(Xs,L2).
 
-% fully fully no, ma si può fare ovviamente seq(5,L) ma non seq(N,L)
+% fully fully no, ma si puÃ² fare ovviamente seq(5,L) ma non seq(N,L)
 seq(0,[]).
 seq(N,[0|T]):- N > 0, N2 is N-1, seq(N2,T).
 
@@ -51,7 +51,6 @@ last([H|T],X,[H|M]) :- last(T,X,M).
 
 seqR2(0,[0]).
 seqR2(N,L):- N > 0, N2 is N-1, seqR2(N2,L2), last(L2,N,L).
-
 
 inv([],[]).
 inv([H|T],LR) :- inv(T,LR2), last(LR2,H,LR).
@@ -66,6 +65,3 @@ times(L,N,LT) :- N>1, N2 is N-1,times(L,N2,LT2),append(LT2,L,LT).
 
 proj([[H|T]],[H]).
 proj([[H|T]|T2],P) :- proj(T2,P2), append([H],P2,P).
-
-
-
