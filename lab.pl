@@ -63,5 +63,5 @@ double(L,LD) :- append(L,L,LD).
 times(L,1,L).
 times(L,N,LT) :- N>1, N2 is N-1,times(L,N2,LT2),append(LT2,L,LT).
 
-proj([[H|T]],[H]).
-proj([[H|T]|T2],P) :- proj(T2,P2), append([H],P2,P).
+proj([[H|_]],[H]).
+proj([[H|_]|T2],P) :- proj(T2,P2), append([H],P2,P).
