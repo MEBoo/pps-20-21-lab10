@@ -24,14 +24,14 @@ average([],C,S,A) :- A is S/C.
 average([X|Xs],C,S,A) :- C2 is C+1, S2 is S+X, average(Xs,C2,S2,A).
 
 
-max([X],M) :- M is X.
-max([X|Xs],M) :- max(Xs,N), X>=N, M is X.
-max([X|Xs],M) :- max(Xs,N), X<N, M is N.
+max([X],X).
+max([X|Xs],X) :- max(Xs,N), X>=N.
+max([X|Xs],N) :- max(Xs,N), X<N.
 
-maxmin([X],Max,Min) :- Max is X, Min is X.
-maxmin([X|Xs],Max,Min) :- maxmin(Xs,Max1,Min1), X>=Max1, Max is X, Min is Min1.
-maxmin([X|Xs],Max,Min) :- maxmin(Xs,Max1,Min1), X=<Min1, Min is X, Max is Max1.
-maxmin([X|Xs],Max,Min) :- maxmin(Xs,Max1,Min1), X<Max1, X>Min1, Min is Min1, Max is Max1.
+maxmin([X],X,X).
+maxmin([X|Xs],X,Min) :- maxmin(Xs,Max,Min), X>=Max.
+maxmin([X|Xs],Max,X) :- maxmin(Xs,Max,Min), X=<Min.
+maxmin([X|Xs],Max,Min) :- maxmin(Xs,Max,Min), X<Max, X>Min.
 
 all_bigger([X],[Y]) :- X > Y.
 all_bigger([X|Xs],[Y|Ys]):- X > Y, all_bigger(Xs,Ys).
